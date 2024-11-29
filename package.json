@@ -1,0 +1,26 @@
+{
+  "name": "wigRepairs",
+  "version": "1.0.0",
+  "description": "track tasks for the month",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nateweis/wigRepairs.git"
+  },
+  "author": "Nate Weiss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nateweis/wigRepairs/issues"
+  },
+  "homepage": "https://github.com/nateweis/wigRepairs#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg-promise": "^11.9.1"
+  }
+}
