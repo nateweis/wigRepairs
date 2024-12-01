@@ -9,7 +9,6 @@ const db = require('../db/db_connection');
 ********************************************/
 
 const getAllJobs = (req, res) => {
-    console.log('we are in the select')
     db.any('SELECT * FROM jobs order by id')
     .then(data => res.json({data, msg: "success getting all jobs"}))
     .catch(err => res.json({err, msg:"error getting jobs"}))

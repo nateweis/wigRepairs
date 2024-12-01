@@ -1,6 +1,8 @@
 export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.includePath = 'partials/Home.html';
+    this.navItems = [{label: 'Home', page: 'Home'} ]
+    this.selectedJob = {};
 
     $window.onload = () => { 
         $http({
@@ -13,5 +15,13 @@ export const jb = ['$http', '$window', function($http, $window){
         })
         .catch(err => console.log(err))
      }
+
+
+    this.updateNav = nav => ctrl.includePath = 'partials/' + nav +'.html';
+
+    this.showDetail = job =>{
+        ctrl.selectedJob = job; 
+        ctrl.includePath = 'partials/DetailDisplay.html';
+    }
 
 }]

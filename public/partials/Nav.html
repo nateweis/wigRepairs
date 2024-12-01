@@ -1,6 +1,6 @@
 <div>
-    <div ng-repeat="nav in jobs.navItems" ng-if="nav.display" ng-click="mac.updateNav($index)">
-        <span >{{nav.item}}</span>
+    <div ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav.page)">
+        <span >{{nav.label}}</span>
     </div>
     <div>
         
