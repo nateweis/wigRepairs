@@ -1,7 +1,10 @@
 export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.includePath = 'partials/Home.html';
-    this.navItems = [{label: 'Home', page: 'Home'} ]
+    this.navItems = [
+        {label: 'Home', page: 'Home'},
+        {label: 'Add Job', page: 'NewJob'}
+     ]
     this.selectedJob = {};
 
     $window.onload = () => { 

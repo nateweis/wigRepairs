@@ -1,5 +1,7 @@
 <div ng-repeat="job in jobs.jobList">
     </br>   
-    <span ng-click="jobs.showDetail(job)">{{job}}</span>
+    <div ng-click="jobs.showDetail(job)">
+        Job Info: {{job.description}} </br> Status: {{job.status}}
+    </div>
     </br>
 </div>
