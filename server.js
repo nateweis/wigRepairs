@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-const taskController = require('./controllers/jobsRouts');
-app.use('/jobs', taskController)
+const jobsController = require('./controllers/jobsRouts');
+app.use('/jobs', jobsController)
 
 
 app.listen(port, () => console.log(`Hidee Hoe im on port ${port}`))
