@@ -1,1 +1,15 @@
-New Job
+<div>
+    <label for="Customer">Customer</label>
+    <input type="text" name="Customer" ng-model="jobs.newJob.Customer">
+    <label for="Job">Job</label>
+    <input type="text" name="Job" ng-model="jobs.newJob.Job">
+    <label for="Price">Price</label>
+    <input type="number" name="Price" ng-model="jobs.newJob.Price">
+
+    </br>
+    <button type="button" ng-click="jobs.addNewJob()">Add</button>
+    <button type="button" ng-click="jobs.submitNewJobs()">Submit</button>
+    
+    <div ng-repeat="nj in jobs.newJobList">{{nj}}</div>
+    
+</div>
