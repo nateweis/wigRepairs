@@ -12,7 +12,7 @@ const testTable = testMode? '_test' : '';
 ********************************************/
 
 const getAllJobs = (req, res) => {
-    db.any('SELECT * FROM jobs'+testTable+' order by id')
+    db.any('SELECT * FROM jobs'+testTable+' order by id desc')
     .then(data => res.json({data, msg: "success getting all jobs"}))
     .catch(err => res.json({err, msg:"error getting jobs"}))
 }

@@ -1,12 +1,23 @@
 export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
+    this.selectedJob = {};
+    this.newJobList= [];
+    let index;
+
+    // ================================== //
+    //             Nav Bar                //
+    // ================================== //
+
     this.includePath = 'partials/Home.html';
     this.navItems = [
         {label: 'Home', page: 'Home'},
         {label: 'Add Job', page: 'NewJob'}
      ]
-    this.selectedJob = {};
-    this.newJobList= []
+    this.updateNav = nav => ctrl.includePath = 'partials/' + nav +'.html';
+
+    // ================================== //
+    //          Get Inital Jobs           //
+    // ================================== //
 
     $window.onload = () => { 
         $http({
@@ -20,13 +31,19 @@ export const jb = ['$http', '$window', function($http, $window){
         .catch(err => console.log(err))
      }
 
+    // ================================== //
+    //          Select a Job              //
+    // ================================== //
 
-    this.updateNav = nav => ctrl.includePath = 'partials/' + nav +'.html';
-
-    this.showDetail = job =>{
+    this.showDetail = (job,i) =>{
         ctrl.selectedJob = job; 
         ctrl.includePath = 'partials/DetailDisplay.html';
+        index = i;
     }
+
+    // ================================== //
+    //             New Job                //
+    // ================================== //
 
     this.addNewJob = () =>{
         if(ctrl.newJob.Customer == null || ctrl.newJob.Job == null || ctrl.newJob.Price == null ) window.alert("To add a job all fields are required");
@@ -44,7 +61,7 @@ export const jb = ['$http', '$window', function($http, $window){
                 if(data.status == 500) window.alert(data.msg);
                 else{
                     const d = data.data.data;
-                    ctrl.jobList.push(...d);
+                    ctrl.jobList.unshift(...d);
                     ctrl.newJobList = [];
                     ctrl.includePath = 'partials/Home.html';
 
@@ -54,5 +71,11 @@ export const jb = ['$http', '$window', function($http, $window){
             .catch(err => {console.log(err); window.alert("There was an error submitting new jobs")})
         }
     }
+
+    // ================================== //
+    //          Update Job                //
+    // ================================== //
+
+    
 
 }]
