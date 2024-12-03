@@ -64,7 +64,6 @@ export const jb = ['$http', '$window', function($http, $window){
                     ctrl.jobList.unshift(...d);
                     ctrl.newJobList = [];
                     ctrl.includePath = 'partials/Home.html';
-
                 }
 
             })
@@ -76,6 +75,20 @@ export const jb = ['$http', '$window', function($http, $window){
     //          Update Job                //
     // ================================== //
 
-    
+    this.submitJobUpdate = () => { 
+        if(ctrl.jobList[ctrl.index].status != 'Complete' && ctrl.selectedJob.status == 'Complete') ctrl.selectedJob.completion_date = Date.now()
+        $http({method: 'PUT', url: '/jobs', data: ctrl.selectedJob})
+        .then(data => {
+            if(data.status == 500) window.alert(data.msg);
+            else{
+                const d = data.data.data;
+                ctrl.jobList[ctrl.index] = d;
+                ctrl.selectedJob = {};
+                ctrl.includePath = 'partials/Home.html';
+            }
+
+        })
+        .catch(err => {console.log(err); window.alert("There was an error updating your job")})
+     }
 
 }]

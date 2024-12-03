@@ -31,7 +31,18 @@ const addJobs = (req, res) => {
 
   }
 
+ /* *****************************************
+                Put Data 
+********************************************/
+
+const updateJob = (req, res) => { 
+    db.one('Update jobs'+testTable+' set name=${name},description=${description},time_spent=${time_spent},status=${status},priorty_level=${priorty_level},due_date=${due_date},received_payment=${received_payment},completion_date=${completion_date} where id = ${id} Returning * ', req.body)
+    .then(data => res.json({data, msg: "success updating job", status: 200}))
+    .catch(err => res.json({err, msg:"error updating jobs", status: 500}))
+ }
+
 module.exports = {
     getAllJobs
     ,addJobs
+    ,updateJob
 }
