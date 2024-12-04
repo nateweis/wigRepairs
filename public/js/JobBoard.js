@@ -3,6 +3,7 @@ export const jb = ['$http', '$window', function($http, $window){
     this.selectedJob = {};
     this.newJobList= [];
     let index;
+    let selectedStatus;
 
     // ================================== //
     //             Nav Bar                //
@@ -36,9 +37,28 @@ export const jb = ['$http', '$window', function($http, $window){
     // ================================== //
 
     this.showDetail = (job,i) =>{
-        ctrl.selectedJob = job; 
+        const newObj = {
+            id: job.id,
+            // customer_id:
+            name: job.name,
+            price: job.price,
+            description: job.description,
+            time_spent: job.time_spent,
+            status: job.status,
+            // parent_job_id:
+            // date_created: 
+            // date_update: 
+            priorty_level: job.priorty_level,
+            due_date: job.due_date,
+            // staff_id:
+            received_payment: job.received_payment,
+            completion_date: job.completion_date
+            // last_altered_by:
+        }
+        ctrl.selectedJob = newObj; 
         ctrl.includePath = 'partials/DetailDisplay.html';
         index = i;
+        selectedStatus = job.status;
     }
 
     // ================================== //
@@ -76,19 +96,19 @@ export const jb = ['$http', '$window', function($http, $window){
     // ================================== //
 
     this.submitJobUpdate = () => { 
-        if(ctrl.jobList[ctrl.index].status != 'Complete' && ctrl.selectedJob.status == 'Complete') ctrl.selectedJob.completion_date = Date.now()
+        if( selectedStatus != 'Complete' && ctrl.selectedJob.status == 'Complete' ) ctrl.selectedJob.completion_date = new Date()
         $http({method: 'PUT', url: '/jobs', data: ctrl.selectedJob})
         .then(data => {
             if(data.status == 500) window.alert(data.msg);
             else{
                 const d = data.data.data;
-                ctrl.jobList[ctrl.index] = d;
+                ctrl.jobList[index] = d;
                 ctrl.selectedJob = {};
                 ctrl.includePath = 'partials/Home.html';
             }
 
         })
-        .catch(err => {console.log(err); window.alert("There was an error updating your job")})
+        .catch(err => {console.log(err); window.alert("There was an error updating your job")})   
      }
 
 }]

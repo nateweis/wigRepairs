@@ -1,6 +1,7 @@
 const db = require('../db/db_connection');
 
-const testMode = true;
+
+const testMode = false;
 const testTable = testMode? '_test' : '';
 
 /* *****************************************
