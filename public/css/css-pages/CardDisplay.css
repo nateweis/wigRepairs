@@ -1,0 +1,98 @@
+/* ************************** 
+        Card Display 
+...........................*/ 
+.header{
+  text-align: center;
+  font-size: 30px;
+  border-bottom: 3px solid var(--bg);
+  width: 35%;
+  margin: 35px auto;
+  padding-bottom: 10px;
+}
+@media (max-width: 1500px){
+  .header{
+    margin: 0 auto;
+  }
+}
+.card-container{
+    height: 100vh;
+    position: relative;
+  }
+  .detail-window{
+    border: 1px solid transparent;
+    width: 25%;
+    height: 90%;
+    position: fixed;
+    left: 0;
+  }
+  .detail-window img{
+    max-width: 100%;
+  }
+  .album-buttons-container{
+    display: flex;
+    justify-content: space-around;
+    max-width: 420px;
+  }
+  .album-buttons-container *{
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  .album-buttons-container button{
+    font-size: 30px;
+    border: none;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    width: 30px;
+    outline: none;
+  }
+  .album-buttons-container button:hover{
+    background-color: var(--bg);
+    color: var(--text-color);
+  }
+  .card-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 75%;
+    position: absolute;
+    right: 0;
+  }
+  
+  .card{
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+  }
+  .card-img{
+    width: 100px;
+    height: 150px;
+  }
+  .card-amount{
+    position: absolute;
+    background-color: rgb(218, 218, 218);
+    z-index: 2;
+    left: 3px;
+    bottom: 3px;
+    padding: 3px;
+    border-radius: 50%;
+  }
+  
+.animate_card{
+    opacity: 0;
+    animation: save_card 500ms linear;
+}
+
+@keyframes save_card{
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50%{
+        transform:translateY(500px) scale(.2);
+        opacity: .8;
+    }
+    100%{
+        transform: translateY(1000px) scale(.1);
+        opacity: 0.1;
+    }
+}

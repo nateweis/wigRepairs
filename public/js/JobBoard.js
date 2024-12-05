@@ -11,10 +11,15 @@ export const jb = ['$http', '$window', function($http, $window){
 
     this.includePath = 'partials/Home.html';
     this.navItems = [
-        {label: 'Home', page: 'Home'},
-        {label: 'Add Job', page: 'NewJob'}
+        {label: 'Home', page: 'Home', active: true},
+        {label: 'Add Job', page: 'NewJob', active: false}
      ]
-    this.updateNav = nav => ctrl.includePath = 'partials/' + nav +'.html';
+    this.updateNav = nav => {
+        ctrl.includePath = 'partials/' + nav.page +'.html';
+        ctrl.navItems.forEach(n => {
+            n.page == nav.page? n.active = true : n.active = false; 
+        });
+    }
 
     // ================================== //
     //          Get Inital Jobs           //
@@ -37,23 +42,10 @@ export const jb = ['$http', '$window', function($http, $window){
     // ================================== //
 
     this.showDetail = (job,i) =>{
-        const newObj = {
-            id: job.id,
-            // customer_id:
-            name: job.name,
-            price: job.price,
-            description: job.description,
-            time_spent: job.time_spent,
-            status: job.status,
-            // parent_job_id:
-            // date_created: 
-            // date_update: 
-            priorty_level: job.priorty_level,
-            due_date: job.due_date,
-            // staff_id:
-            received_payment: job.received_payment,
-            completion_date: job.completion_date
-            // last_altered_by:
+        //  made newObj instead of directly assigning selectedJob to job so they dont share the same memory spcace
+        const newObj = {};
+        for (const key in job) {
+            newObj[key] = job[key]
         }
         ctrl.selectedJob = newObj; 
         ctrl.includePath = 'partials/DetailDisplay.html';

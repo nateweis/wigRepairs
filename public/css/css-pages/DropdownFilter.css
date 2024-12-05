@@ -1,0 +1,143 @@
+/* ************************** 
+      Filter Dropdown 
+...........................*/ 
+
+.dropdown-container{
+    height: 30px;
+    background-color: var(--bg);
+    padding: 0 1rem;
+    border-bottom: var(--border);
+    
+  }
+  
+  .dropdown{
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dropdown-item{
+    width: calc(30px * 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dropdown-btn{
+    width: calc(30px * 0.5);
+    height: calc(30px * 0.5);
+    padding: 5px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in-out 300ms;
+  }
+  .dropdown-btn:hover{
+    background-color: var(--bg-accent);
+    border-radius: 40%;
+  }
+  
+  .dropdown-menu{
+    position: absolute;
+    top: 88px;
+    z-index: 5;
+    width: 300px;
+    background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    overflow: hidden;
+    color: var(--text-color);
+    
+  }
+  .extended{
+    width: 100%;
+    
+  }
+  #submit{
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 99%;
+    padding-top: 20px;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .menu-item{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius:var(--border-radius) ;
+    transition: background var(--speed);
+    padding: 0.5rem;
+  }
+  .menu-item:hover{
+    background-color: #525357;
+  }
+  
+  .arrow {
+    border:solid var(--text-color);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    cursor: pointer;
+    
+  }
+  .filter-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .filter-container span{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .start_out{
+    position: absolute;
+    transform: translateX(110%);
+    opacity: .01; 
+  }
+  
+  .slide_out_left{
+    position: absolute;
+    transform: translateX(-110%); 
+    opacity: .01;
+    animation: slideOutLeft 500ms ease-in-out;
+  }
+  .slide_in_left{
+    animation: slideInLeft 500ms ease-in-out;
+  }
+  
+  .slide_out_right{
+    position: absolute;
+    transform: translateX(110%); 
+    opacity: .01;
+    animation: slideOutRight 500ms ease-in-out;
+  }
+  .slide_in_right{
+    animation: slideInRight 500ms ease-in-out;
+  }
+  
+  @keyframes slideOutLeft{
+    0%{transform: translateX(0); opacity: 1; position: static;}
+    100%{opacity: .01;}
+  }
+  @keyframes slideInLeft{
+    0%{transform: translateX(110%); opacity: 0.1; position: absolute;}
+    100%{transform: translateX(0); opacity: 1;}
+  }
+  @keyframes slideOutRight{
+    0%{transform: translateX(0); opacity: 1; position: static;}
+    100%{opacity: .01;}
+  }
+  @keyframes slideInRight{
+    0%{transform: translateX(-110%); opacity: 0.1; position: absolute;}
+    100%{transform: translateX(0); opacity: 1;}
+  }
+  

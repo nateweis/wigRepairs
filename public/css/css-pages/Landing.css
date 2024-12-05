@@ -1,0 +1,134 @@
+/* ************************** 
+        Landing Page
+...........................*/
+.home-container{
+    height: 100vh;
+}
+.home-container .home-link-outer{
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    color: rgb(218, 218, 218);
+    position: relative;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.home-container .home-left-link{
+    float: left;
+    background-image: url('../../images/slifer_background.jpg');
+    
+}
+.home-container .home-right-link{
+    float: right;
+    background-image: url('../../images/wingeddragon_background.jpg');
+}
+.dark-cover-home{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  z-index: 1;
+  transition: all .2s ease;
+} 
+
+.dark-cover-home:hover{
+    background-color:  rgba(0, 0, 0, .7);
+}
+.dark-cover-home span{
+    display: inline-block;
+    padding: 25px;
+    font-size: 28px;
+    margin-top: 30%;
+    position: relative;
+    transition: all .5 ease-in-out;
+}
+
+.dark-cover-home span::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    transition: all .2 ease-in-out;
+}
+
+.dark-cover-home span::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    transition: all .2 ease-in-out;
+}
+
+.dark-cover-home:hover span::before{
+    animation: border .5s linear forwards; 
+}
+
+.dark-cover-home:hover span::after{
+    animation: border2 .5s linear forwards; 
+}
+
+@keyframes border{
+    0%{
+      width: 0;
+      height: 0;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    50%{
+      width: 100%;
+      height: 0;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: rgb(218, 218, 218);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+    100%{
+      width: 100%;
+      height: 100%;
+      border-top-color: rgb(218, 218, 218);
+      border-right-color: rgb(218, 218, 218);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  @keyframes border2{
+    0%{
+      width: 0;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: rgb(218, 218, 218);
+    }
+    50%{
+      width: 0;
+      height: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color:rgb(218, 218, 218);
+      border-left-color: rgb(218, 218, 218);
+    }
+    100%{
+      width: 100%;
+      height: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: rgb(218, 218, 218);
+      border-left-color: rgb(218, 218, 218);
+    }
+  }

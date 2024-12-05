@@ -1,8 +1,10 @@
 <div>
-    <div ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav.page)">
-        <span >{{nav.label}}</span>
-    </div>
-    <div>
-        
-    </div>   
+    
+    <nav class="menu" id="nav">
+        <span class="nav-item {{nav.active? 'active': ''}}" ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav)">
+            <span class="icon"></span>
+            <a href="#">{{nav.label}}</a>
+        </span>
+    </nav> 
+
 </div>

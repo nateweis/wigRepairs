@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import './css-pages/General.css';
+@import './css-pages/Login.css';
+@import './css-pages/Landing.css';
+@import './css-pages/NavBar.css';
+@import './css-pages/DropdownFilter.css';
+@import './css-pages/CardDisplay.css';
+@import './css-pages/CardBoxStyles.css';
+
+:root{
+  --bg: #242326;
+  --bg-accent:#484a4d;
+  --text-color: #dadce1;
+  --color-brown: rgb(94, 56, 13);
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+  --font: 'Noto Serif', serif;
+}
+
+

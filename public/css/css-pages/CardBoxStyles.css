@@ -1,0 +1,14 @@
+/* ************************** 
+        Card Boxes 
+...........................*/ 
+.coverbox-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.coverbox-img{
+    height: 250px;
+    width: 150px;
+}
