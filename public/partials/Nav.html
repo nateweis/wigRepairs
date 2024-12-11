@@ -1,10 +1,35 @@
-<div>
+<nav>
+    <div class="navbar">
+      <div class="container nav-container">
+          <input class="checkbox" type="checkbox" ng-model="jobs.pageHide" ng-if="!jobs.fullScreen" />
+          <div class="hamburger-lines" ng-if="!jobs.fullScreen">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>  
+          <div class="center-nav" ng-if="jobs.fullScreen">
+            <div class="center-item" ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav.page)"><a href="">{{nav.label}}</a></div>
+          </div>
+        <div class="logo" ng-click="jobs.updateNav('Home')">
+          <h1>Navbar</h1>
+        </div>
+        <div class="menu-items">
+          <li ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav.page)"><a href="#">{{nav.label}}</a></li>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+<!-- <div>
     
     <nav class="menu" id="nav">
-        <span class="nav-item {{nav.active? 'active': ''}}" ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav)">
+        <span class="nav-item {{nav.active? 'active': ''}}" ng-repeat="nav in jobs.navItems" ng-click="jobs.updateNav(nav.page)">
             <span class="icon"></span>
             <a href="#">{{nav.label}}</a>
         </span>
     </nav> 
 
-</div>
+</div> -->

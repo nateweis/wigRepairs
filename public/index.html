@@ -9,7 +9,7 @@
     <div ng-controller="Jobscontroller as jobs">
       <div class="container">
         <div ng-include="'partials/Nav.html'" ></div>
-        <div ng-include="jobs.includePath" ></div>
+        <div ng-include="jobs.includePath" class="{{jobs.pageHide? 'pageHide': ''}}"></div>
       </div>
     </div> 
 

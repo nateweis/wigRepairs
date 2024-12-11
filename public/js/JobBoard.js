@@ -2,6 +2,7 @@ export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.selectedJob = {};
     this.newJobList= [];
+    this.fullScreen = true;
     let index;
     let selectedStatus;
 
@@ -15,10 +16,15 @@ export const jb = ['$http', '$window', function($http, $window){
         {label: 'Add Job', page: 'NewJob', active: false}
      ]
     this.updateNav = nav => {
-        ctrl.includePath = 'partials/' + nav.page +'.html';
+        ctrl.includePath = 'partials/' + nav +'.html';
         ctrl.navItems.forEach(n => {
-            n.page == nav.page? n.active = true : n.active = false; 
+            n.page == nav? n.active = true : n.active = false; 
         });
+        ctrl.pageHide = false;
+    }
+
+    const checkScreenSize = ()=> {
+        ctrl.fullScreen = $window.innerWidth >= 675 ? true:false;
     }
 
     // ================================== //
@@ -26,6 +32,7 @@ export const jb = ['$http', '$window', function($http, $window){
     // ================================== //
 
     $window.onload = () => { 
+        checkScreenSize();
         $http({
             method: 'GET',
             url: '/jobs' 
@@ -36,6 +43,9 @@ export const jb = ['$http', '$window', function($http, $window){
         })
         .catch(err => console.log(err))
      }
+
+     $window.onresize = ()=> checkScreenSize();
+     
 
     // ================================== //
     //          Select a Job              //
