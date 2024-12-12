@@ -1,4 +1,4 @@
 <div>
-    <div ng-click="jobs.updateNav('EditJobs')">Edit</div>
-    <div>{{jobs.selectedJob}}</div>
+    <div ng-click="jobs.updateNav('EditJobs')" class="edit-button">Edit</div>
+    <div ng-repeat="(k,v) in jobs.selectedJob" class="detail-item"><strong>{{k}}</strong> : {{v}}</div>
 </div>

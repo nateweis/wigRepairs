@@ -1,0 +1,4 @@
+.home-item{
+    cursor: pointer;
+    border: 1px solid var(--bg);
+}

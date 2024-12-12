@@ -2,7 +2,6 @@ export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.selectedJob = {};
     this.newJobList= [];
-    this.fullScreen = true;
     let index;
     let selectedStatus;
 
@@ -23,16 +22,12 @@ export const jb = ['$http', '$window', function($http, $window){
         ctrl.pageHide = false;
     }
 
-    const checkScreenSize = ()=> {
-        ctrl.fullScreen = $window.innerWidth >= 675 ? true:false;
-    }
 
     // ================================== //
     //          Get Inital Jobs           //
     // ================================== //
 
     $window.onload = () => { 
-        checkScreenSize();
         $http({
             method: 'GET',
             url: '/jobs' 
@@ -44,7 +39,6 @@ export const jb = ['$http', '$window', function($http, $window){
         .catch(err => console.log(err))
      }
 
-     $window.onresize = ()=> checkScreenSize();
      
 
     // ================================== //

@@ -1,0 +1,6 @@
+.edit-select-containter{
+    display: flex;
+}
+.edit-select-containter *{
+    margin: 10px;
+}

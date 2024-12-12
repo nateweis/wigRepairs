@@ -1,6 +1,6 @@
 <div ng-repeat="job in jobs.jobList">
     </br>   
-    <div ng-click="jobs.showDetail(job,$index)">
+    <div ng-click="jobs.showDetail(job,$index)" class="home-item">
         Job Number: {{job.id}} </br> Job Info: {{job.description}} </br> Status: {{job.status}}
     </div>
     </br>

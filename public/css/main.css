@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 @import './css-pages/General.css';
-@import './css-pages/Login.css';
-@import './css-pages/Landing.css';
 @import './css-pages/NavBar.css';
-@import './css-pages/DropdownFilter.css';
-@import './css-pages/CardDisplay.css';
-@import './css-pages/CardBoxStyles.css';
+@import './css-pages/Home.css';
+@import './css-pages/DetailDisplay.css';
+@import './css-pages/EditJobs.css';
+
 
 :root{
   --bg: #242326;
