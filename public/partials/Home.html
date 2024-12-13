@@ -1,7 +1,21 @@
-<div ng-repeat="job in jobs.jobList">
-    </br>   
-    <div ng-click="jobs.showDetail(job,$index)" class="home-item">
-        Job Number: {{job.id}} </br> Job Info: {{job.description}} </br> Status: {{job.status}}
+<div>
+    <label for="searchTypes">Search Jobs:</label>
+
+    <select name="searchTypes" ng-model="jobs.searchType">
+        <option value="none" selected >No Search</option>
+        <option value="id">Id</option>
+        <option value="description">Description</option>
+    </select>
+
+    <input type="number" ng-model="jobs.searchText" ng-if="jobs.searchType == 'id'" placeholder="ID">
+    <input type="text" ng-model="jobs.searchText" ng-if="jobs.searchType == 'description'" placeholder="Description">
+   
+
+    <div ng-repeat="job in jobs.jobList | searchBar: jobs.searchText: jobs.searchType">
+        </br> 
+        <div ng-click="jobs.showDetail(job,$index)" class="home-item">
+            Job Number: {{job.id}} </br> Job Info: {{job.description}} </br> Status: {{job.status}}
+        </div>
+        </br>
     </div>
-    </br>
 </div>
