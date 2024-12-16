@@ -3,8 +3,11 @@ export const jb = ['$http', '$window', function($http, $window){
     this.selectedJob = {};
     this.newJobList= [];
     this.jobList = [];
+    this.searchType = 'none';
     let index;
     let selectedStatus;
+
+    this.resetSearch = ()=> ctrl.searchText ="";
 
     // ================================== //
     //             Nav Bar                //

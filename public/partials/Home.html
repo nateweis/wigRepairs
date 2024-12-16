@@ -1,8 +1,8 @@
 <div>
     <label for="searchTypes">Search Jobs:</label>
 
-    <select name="searchTypes" ng-model="jobs.searchType">
-        <option value="none" selected >No Search</option>
+    <select name="searchTypes" ng-model="jobs.searchType" ng-change="jobs.resetSearch()">
+        <option value="none" >No Search</option>
         <option value="id">Id</option>
         <option value="description">Description</option>
     </select>
