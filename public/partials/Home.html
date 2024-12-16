@@ -5,10 +5,23 @@
         <option value="none" >No Search</option>
         <option value="id">Id</option>
         <option value="description">Description</option>
+        <option value="status">Status</option>
+        <option value="received_payment">Received Payment</option>
     </select>
 
     <input type="number" ng-model="jobs.searchText" ng-if="jobs.searchType == 'id'" placeholder="ID">
     <input type="text" ng-model="jobs.searchText" ng-if="jobs.searchType == 'description'" placeholder="Description">
+    <select ng-model="jobs.searchText" ng-if="jobs.searchType == 'status'">
+        <option value="Not Started">Not Started</option>
+        <option value="Started">Started</option>
+        <option value="Returned">Returned</option>
+        <option value="Canceled">Canceled</option>
+        <option value="Complete">Complete</option>
+    </select>
+    <span ng-if="jobs.searchType == 'received_payment'">No</span>
+    <input type="radio" name="paid" value="No" ng-model="jobs.searchText" ng-if="jobs.searchType == 'received_payment'">
+    <span ng-if="jobs.searchType == 'received_payment'">Yes</span>
+    <input type="radio" name="paid" value="Yes" ng-model="jobs.searchText" ng-if="jobs.searchType == 'received_payment'">
    
 
     <div ng-repeat="job in jobs.jobList | searchBar: jobs.searchText: jobs.searchType">

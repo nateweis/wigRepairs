@@ -10,7 +10,7 @@ export const search = () => {
         if(searchType == 'id'){
             angular.forEach(searchItems, function(item) {
                 if (item.id == searchVal) {
-                output.push(item);
+                    output.push(item);
                 }
             });
             return output;
@@ -19,7 +19,28 @@ export const search = () => {
         else if(searchType == 'description'){
             angular.forEach(searchItems, function(item) {
                 if (item.description.toLowerCase().includes(searchVal.toLowerCase())) {
-                output.push(item);
+                    output.push(item);
+                }
+            });
+            return output;
+        }
+
+        else if(searchType == 'status'){
+            angular.forEach(searchItems, function(item) {
+                if (item.status == searchVal) {
+                    output.push(item);
+                }
+            });
+            return output;
+        }
+
+        else if(searchType == 'received_payment'){
+            angular.forEach(searchItems, function(item) {
+                if (item.received_payment && searchVal == 'Yes') {
+                    output.push(item);
+                }
+                if (!item.received_payment && searchVal == 'No') {
+                    output.push(item);
                 }
             });
             return output;
