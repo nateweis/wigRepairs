@@ -4,9 +4,9 @@ const app = angular.module('Jobsapp', []);
 
 app.filter('searchBar', function() {
     const newArr = (searchItems, searchVal, searchType) => {
-        console.log(searchItems)
-        console.log(searchVal)
-        console.log(searchType)
+        // console.log(searchItems)
+        // console.log(searchVal)
+        // console.log(searchType)
 
         if(searchType == 'none' || !searchType || !searchVal) return searchItems
         var output = [];

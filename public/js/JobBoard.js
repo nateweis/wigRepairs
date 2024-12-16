@@ -2,6 +2,7 @@ export const jb = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.selectedJob = {};
     this.newJobList= [];
+    this.jobList = [];
     let index;
     let selectedStatus;
 
@@ -33,8 +34,11 @@ export const jb = ['$http', '$window', function($http, $window){
             url: '/jobs' 
         })
         .then(res => {
-            console.log(res)
-            ctrl.jobList = res.data.data
+            for (let i = 0; i < res.data.data.length; i++) {
+                const j = res.data.data[i];
+                j.index = i;
+                ctrl.jobList.push(j)
+            }
         })
         .catch(err => console.log(err))
      }
@@ -45,7 +49,7 @@ export const jb = ['$http', '$window', function($http, $window){
     //          Select a Job              //
     // ================================== //
 
-    this.showDetail = (job,i) =>{
+    this.showDetail = (job) =>{
         //  made newObj instead of directly assigning selectedJob to job so they dont share the same memory spcace
         const newObj = {};
         for (const key in job) {
@@ -53,9 +57,10 @@ export const jb = ['$http', '$window', function($http, $window){
         }
         ctrl.selectedJob = newObj; 
         ctrl.includePath = 'partials/DetailDisplay.html';
-        index = i;
+        index = job.index;
         selectedStatus = job.status;
     }
+    
 
     // ================================== //
     //             New Job                //

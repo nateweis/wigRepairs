@@ -13,7 +13,7 @@
 
     <div ng-repeat="job in jobs.jobList | searchBar: jobs.searchText: jobs.searchType">
         </br> 
-        <div ng-click="jobs.showDetail(job,$index)" class="home-item">
+        <div ng-click="jobs.showDetail(job)" class="home-item">
             Job Number: {{job.id}} </br> Job Info: {{job.description}} </br> Status: {{job.status}}
         </div>
         </br>
