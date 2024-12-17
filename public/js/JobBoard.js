@@ -4,8 +4,12 @@ export const jb = ['$http', '$window', function($http, $window){
     this.newJobList= [];
     this.jobList = [];
     this.searchType = 'none';
+    this.orderDesc = true;
+    this.orderJobs = 'id';
+
     let index;
     let selectedStatus;
+
 
     this.resetSearch = ()=> ctrl.searchText ="";
 
