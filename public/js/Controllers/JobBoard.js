@@ -1,7 +1,7 @@
-export const jb = ['$http', '$window', function($http, $window){
+export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, GlobalShare){
     const ctrl = this;
     this.selectedJob = {};
-    this.newJobList= [];
+    this.newJobList = [];
     this.jobList = [];
     this.searchType = 'none';
     this.orderDesc = true;
@@ -17,18 +17,20 @@ export const jb = ['$http', '$window', function($http, $window){
     //             Nav Bar                //
     // ================================== //
 
-    this.includePath = 'partials/Home.html';
-    this.navItems = [
-        {label: 'Home', page: 'Home', active: true},
-        {label: 'Add Job', page: 'NewJob', active: false}
-     ]
-    this.updateNav = nav => {
-        ctrl.includePath = 'partials/' + nav +'.html';
-        ctrl.navItems.forEach(n => {
-            n.page == nav? n.active = true : n.active = false; 
-        });
-        ctrl.pageHide = false;
-    }
+
+    // this.includePath = 'partials/Home.html';
+    // this.navItems = [
+    //     {label: 'Home', page: 'Home', active: true},
+    //     {label: 'Add Job', page: 'NewJob', active: false},
+    //     {label: 'Add Person', page: 'AddPerson', active: false}
+    //  ]
+    // this.updateNav = nav => {
+    //     ctrl.includePath = 'partials/' + nav +'.html';
+    //     ctrl.navItems.forEach(n => {
+    //         n.page == nav? n.active = true : n.active = false; 
+    //     });
+    //     ctrl.pageHide = false;
+    // }
 
 
     // ================================== //
@@ -62,8 +64,9 @@ export const jb = ['$http', '$window', function($http, $window){
         for (const key in job) {
             newObj[key] = job[key]
         }
-        ctrl.selectedJob = newObj; 
-        ctrl.includePath = 'partials/DetailDisplay.html';
+        ctrl.selectedJob = newObj;
+        GlobalShare.setNavPath('DetailDisplay'); 
+        // ctrl.includePath = 'partials/DetailDisplay.html';
         index = job.index;
         selectedStatus = job.status;
     }
@@ -91,7 +94,8 @@ export const jb = ['$http', '$window', function($http, $window){
                     const d = data.data.data;
                     ctrl.jobList.unshift(...d);
                     ctrl.newJobList = [];
-                    ctrl.includePath = 'partials/Home.html';
+                    GlobalShare.setNavPath('Home'); 
+                    // ctrl.includePath = 'partials/Home.html';
                 }
 
             })
@@ -112,7 +116,8 @@ export const jb = ['$http', '$window', function($http, $window){
                 const d = data.data.data;
                 ctrl.jobList[index] = d;
                 ctrl.selectedJob = {};
-                ctrl.includePath = 'partials/Home.html';
+                GlobalShare.setNavPath('Home'); 
+                // ctrl.includePath = 'partials/Home.html';
             }
 
         })

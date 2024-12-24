@@ -1,0 +1,67 @@
+
+    <div>
+        <div>
+            <span>
+                <label for="name">Name</label>
+                <input type="text" name="name" ng-model="jobs.newCustomer.name">
+            </span>
+            <span>
+                <label for="email">Email</label>
+                <input type="text" name="email" ng-model="jobs.newCustomer.email">
+            </span>
+            <span>
+                <label for="phone_number">Phone Number</label>
+                <input type="text" name="phone_number" ng-model="jobs.newCustomer.phone_number">
+            </span>
+            <span>
+                <label for="street">Street</label>
+                <input type="text" name="street" ng-model="jobs.newCustomer.street">
+            </span>
+            <span>
+                <label for="city">City</label>
+                <input type="text" name="city" ng-model="jobs.newCustomer.city">
+            </span>
+            <span>
+                <label for="state">State</label>
+                <input type="text" name="state" ng-model="jobs.newCustomer.state">
+            </span>
+            <span>
+                <label for="zip">Zip</label>
+                <input type="text" name="zip" ng-model="jobs.newCustomer.zip">
+            </span>
+            <span>
+                <label for="part_of_company">Company Personnel</label>
+                <input type="checkbox" name="part_of_company" ng-model="jobs.newCustomer.part_of_company">
+            </span>
+        </div>
+        
+        <div ng-if="jobs.newCustomer.part_of_company">
+            <span>
+                <label for="title">Title</label>
+                <input type="text" name="title" ng-model="jobs.newCustomer.title">
+            </span>
+            <span>
+                <label for="pay_amount">Pay Amount ({{jobs.newCustomer.pay_rate}})</label>
+                <input type="number" step=".01" name="pay_amount" ng-model="jobs.newCustomer.pay_amount">
+            </span>
+            <span>
+                <label for="pay_rate">Pay Rate</label>
+                <select name="pay_rate" ng-model="jobs.newCustomer.pay_rate">
+                    <option value="hourly">Hourly</option>
+                    <option value="salary">Salary</option>
+                </select>
+            </span>
+            <span>
+                <label for="admin">Admin Privileges</label>
+                <input type="checkbox" name="admin" ng-model="jobs.newCustomer.admin">
+            </span>
+        </div>
+        
+    
+        </br>
+        <!-- <button type="button" ng-click="jobs.addNewJob()">Add</button>
+        <button type="button" ng-click="jobs.submitNewJobs()">Submit</button> -->
+        
+        <div ng-repeat="c in jobs.newJobList">{{c}}</div>
+        
+    </div>

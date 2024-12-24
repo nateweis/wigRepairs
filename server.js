@@ -13,6 +13,9 @@ app.use(express.static('public'));
 const jobsController = require('./controllers/jobsRouts');
 app.use('/jobs', jobsController)
 
+const peopleController = require('./controllers/peopleRouts');
+app.use('/people', peopleController)
+
 
 app.listen(port, () => console.log(`Hidee Hoe im on port ${port}`))
 
