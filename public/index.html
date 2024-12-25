@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
   <body>
-    <div ng-controller="NavController as nc"> <span ng-controller="Jobscontroller as jobs">
+    <div ng-controller="NavController as nc"> <span ng-controller="Jobscontroller as jobs"><span ng-controller="PPLcontroller as pc">
       <div class="container">
         <div ng-include="'partials/Nav.html'" ></div>
         <div ng-include="nc.includePath" class="{{nc.pageHide? 'pageHide': ''}}"></div>
       </div>
-    </span></div> 
+    </span></span></div> 
     
 
   </body>

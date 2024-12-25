@@ -3,42 +3,48 @@ const db = require('../db/db_connection');
  /* *****************************************
                 Post Data 
 ********************************************/
-const testData = [{name: "Tim", person_type : "Customer"}, {name: "Bob", person_type : "Staff"}]
-const addPeople = async (req, res) => { 
-    // const result1 = await new Promise((resolve) => setTimeout(() => resolve("First"), 1000));
-    // console.log(result1);
 
-    // const result2 = await new Promise((resolve) => setTimeout(() => resolve("Second"), 1000));
-    // console.log(result2);
-
-    const dbResolve = testData.map((np) => {
-        return db.one('Insert INTO people (name,person_type) VALUES (${name}, ${person_type}) Returning *', np) 
+const addPeople =  (req, res) => { 
+    const bodyData = req.body;
+    const dbResolve = bodyData.map((np) => {
+        return db.one('Insert INTO people (name,person_type,email,phone_number,street,city,state,zip) VALUES (${name}, ${person_type}, ${email}, ${phone_number}, ${street},${city},${state},${zip}) Returning *', np) 
     });
     Promise.all(dbResolve)
     .then(data => {
-        // console.log(data)
-        addStaff(data, res)
+        const staffList = [];
+        const customerList = [];
+
+        data.forEach(d => {
+            bodyData.forEach( bd => {
+                if(bd.name == d.name && bd.phone_number == d.phone_number && bd.email == d.email){
+                    bd.id = d.id;
+                    if(bd.person_type == 'Customer') customerList.push(bd);
+                    else {
+                        bd.person_id = d.id;
+                        staffList.push(d);
+                    }
+                }
+            })
+        });
+        addStaff(staffList, customerList, res)
     })
-    .catch(err => res.json({err, msg:"error adding one or more new jobs", status: 500}))
+    .catch(err => res.json({err, msg:"error when trying to add one or more person", status: 500}))
 }
 
-const addStaff = (data, res) =>{
-    const staffOnly = data.filter(i => i.person_type != 'Customer')
-    const dbResolve = staffOnly.map((d) => {
-        return db.one('Insert INTO staff (person_id) VALUES (${id}) Returning *', d);
+const addStaff = (sl, cl, res) =>{
+    const dbResolve = sl.map((s) => {
+        return db.none('Insert INTO staff (person_id,title,pay_amount,pay_rate,admin) VALUES (${id},${title},${pay_amount},${pay_rate},${admin})', s);
     });
 
     Promise.all(dbResolve)
-    .then(newData => {
-        console.log({msg: "all people", data})
-        console.log({msg: "staff enhancments", newData})
-    })
+    .then(data => res.json({staffList: sl, customerList: cl, msg: "success adding all new people", status: 200}))
+    .catch(err => res.json({err, msg:"error when trying to add one or more person to the staff enhancment", status: 500}))
 }
 
 
-// addPeople();
+
 
 
 module.exports = {
-
+    addPeople
 }
