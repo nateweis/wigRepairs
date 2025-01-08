@@ -12,25 +12,8 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
 
 
     this.resetSearch = ()=> ctrl.searchText ="";
+    const setIndex = () => {for (let i = 0; i < ctrl.jobList.length; i++) {ctrl.jobList[i].index = i}}
 
-    // ================================== //
-    //             Nav Bar                //
-    // ================================== //
-
-
-    // this.includePath = 'partials/Home.html';
-    // this.navItems = [
-    //     {label: 'Home', page: 'Home', active: true},
-    //     {label: 'Add Job', page: 'NewJob', active: false},
-    //     {label: 'Add Person', page: 'AddPerson', active: false}
-    //  ]
-    // this.updateNav = nav => {
-    //     ctrl.includePath = 'partials/' + nav +'.html';
-    //     ctrl.navItems.forEach(n => {
-    //         n.page == nav? n.active = true : n.active = false; 
-    //     });
-    //     ctrl.pageHide = false;
-    // }
 
 
     // ================================== //
@@ -43,11 +26,13 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
             url: '/jobs' 
         })
         .then(res => {
-            for (let i = 0; i < res.data.data.length; i++) {
-                const j = res.data.data[i];
-                j.index = i;
-                ctrl.jobList.push(j)
-            }
+            // for (let i = 0; i < res.data.data.length; i++) {
+            //     const j = res.data.data[i];
+            //     j.index = i;
+            //     ctrl.jobList.push(j)
+            // }
+            ctrl.jobList = res.data.data;
+            setIndex()
         })
         .catch(err => console.log(err))
      }
@@ -76,14 +61,38 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
     //             New Job                //
     // ================================== //
 
+    const resetNewJob = () => {ctrl.newJob = {Customer:"",Job:"",Price:0}}
+    resetNewJob();
+
+    this.jobTemplates = [
+        {Job: "Sold Headband", Price: 18},
+        {Job: "Fill In", Price: 220},
+        {Job: "Baby Hair", Price: 150},
+        {Job: "Hatfall", Price: 100},
+        {Job: "Lining", Price: 40},
+        {Job: "Weft Removal", Price: 15},
+        {Job: "Hair Sewn", Price: 200},
+        {Job: "Velvet", Price: 20},
+        {Job: "Elastics", Price: 40}
+    ];
+
+    this.selectTemplate = () => {
+        const t = ctrl.template;
+        ctrl.newJob.Job = ctrl.jobTemplates[t].Job; 
+        ctrl.newJob.Price = ctrl.jobTemplates[t].Price;
+    }
+
     this.addNewJob = () =>{
         if(ctrl.newJob.Customer == null || ctrl.newJob.Job == null || ctrl.newJob.Price == null ) window.alert("To add a job all fields are required");
         else{
             const nj = {name: ctrl.newJob.Job, price: ctrl.newJob.Price, description: ctrl.newJob.Customer + ' - ' + ctrl.newJob.Job, status :"Not Started"};
             ctrl.newJobList.push(nj);
-            ctrl.newJob = null;
+            resetNewJob();
+            ctrl.template = null;
         }
     }
+
+    this.removeJobFromList = i => ctrl.newJobList.splice(i, 1);
 
     this.submitNewJobs = ()=>{
         if(ctrl.newJobList.length > 0){
@@ -94,6 +103,7 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
                     const d = data.data.data;
                     ctrl.jobList.unshift(...d);
                     ctrl.newJobList = [];
+                    setIndex()
                     GlobalShare.setNavPath('Home'); 
                     // ctrl.includePath = 'partials/Home.html';
                 }
@@ -116,6 +126,7 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
                 const d = data.data.data;
                 ctrl.jobList[index] = d;
                 ctrl.selectedJob = {};
+                setIndex()
                 GlobalShare.setNavPath('Home'); 
                 // ctrl.includePath = 'partials/Home.html';
             }

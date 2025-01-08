@@ -1,6 +1,16 @@
 const db = require('../db/db_connection');
 
- /* *****************************************
+/* *****************************************
+                 Get Data
+********************************************/
+
+const getPeople = (req, res) => {
+    db.any('select * from people left outer join staff on people.id = staff.person_id order by name')
+    .then(data => res.json({data, msg: "success getting all people", status: 200}))
+    .catch(err => res.json({err, msg:"error getting people", status:500}))
+}
+
+/* *****************************************
                 Post Data 
 ********************************************/
 
@@ -21,7 +31,7 @@ const addPeople =  (req, res) => {
                     if(bd.person_type == 'Customer') customerList.push(bd);
                     else {
                         bd.person_id = d.id;
-                        staffList.push(d);
+                        staffList.push(bd);
                     }
                 }
             })
@@ -32,6 +42,7 @@ const addPeople =  (req, res) => {
 }
 
 const addStaff = (sl, cl, res) =>{
+
     const dbResolve = sl.map((s) => {
         return db.none('Insert INTO staff (person_id,title,pay_amount,pay_rate,admin) VALUES (${id},${title},${pay_amount},${pay_rate},${admin})', s);
     });
@@ -46,5 +57,6 @@ const addStaff = (sl, cl, res) =>{
 
 
 module.exports = {
+    getPeople,
     addPeople
 }

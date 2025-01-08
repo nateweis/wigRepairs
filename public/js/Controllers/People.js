@@ -2,6 +2,23 @@ export const people = ['$http', '$window', function($http, $window){
     const ctrl = this;
     this.newCustomerList = [];
 
+    // ================================== //
+    //         Get Inital People          //
+    // ================================== //
+
+    const getMembers = () => { 
+        $http({
+            method: 'GET',
+            url: '/people' 
+        })
+        .then(res => {
+            ctrl.allPeople = res.data.data;
+        })
+        .catch(err => console.log(err))
+     }
+
+     getMembers();
+
    
     // ================================== //
     //             New Person             //
@@ -9,7 +26,7 @@ export const people = ['$http', '$window', function($http, $window){
     const uniqueNewPerson = ()=>{
         let res = true;
         ctrl.newCustomerList.forEach(nc => {
-            if(nc.name === ctrl.newCustomer.name && nc.email === ctrl.newCustomer.email && nc.phone_number === ctrl.newCustomer.phone_number) res = false;
+            if(nc.name === ctrl.newCustomer.name && nc.email === ctrl.newCustomer.email) res = false;
         });
 
         return res;

@@ -38,13 +38,14 @@
         <span ng-if="jobs.searchType == 'received_payment'">Yes</span>
         <input type="radio" name="paid" value="Yes" ng-model="jobs.searchText" ng-if="jobs.searchType == 'received_payment'">
     </div>
-   
+
+    <p>Total Jobs Showing: {{ (jobs.jobList | searchBar:jobs.searchText:jobs.searchType).length }}</p>
 
     <div ng-repeat="job in jobs.jobList | searchBar: jobs.searchText: jobs.searchType | orderBy : jobs.orderJobs : jobs.orderDesc">
-        </br> 
+        </br>
         <div ng-click="jobs.showDetail(job)" class="home-item">
             Job Number: {{job.id}} </br> Job Info: {{job.description}} </br> Status: {{job.status}}
         </div>
         </br>
-    </div>
+    </div> 
 </div>

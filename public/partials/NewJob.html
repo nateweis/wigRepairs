@@ -7,10 +7,19 @@
     <label for="Price">Price</label>
     <input type="number" name="Price" ng-model="jobs.newJob.Price">
 
+    <label for="template">Pre Sets</label>
+    <select ng-model="jobs.template" ng-change="jobs.selectTemplate()">
+        <option ng-repeat="t in jobs.jobTemplates" value="{{$index}}">{{t.Job}}</option>
+    </select>
+
+    <select>
+        <option ng-repeat="p in pc.allPeople" ng-if="p.person_type == 'Customer'">{{p.name}}</option>
+    </select>
+
     </br>
     <button type="button" ng-click="jobs.addNewJob()">Add</button>
     <button type="button" ng-click="jobs.submitNewJobs()">Submit</button>
     
-    <div ng-repeat="nj in jobs.newJobList">{{nj}}</div>
+    <div ng-repeat="nj in jobs.newJobList">{{nj}}  <span style="cursor: pointer;" ng-click="jobs.removeJobFromList($index)">[X]</span></div>
     
 </div>
