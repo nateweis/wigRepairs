@@ -5,7 +5,7 @@ const db = require('../db/db_connection');
 ********************************************/
 
 const getPeople = (req, res) => {
-    db.any('select * from people left outer join staff on people.id = staff.person_id order by name')
+    db.any('select people.*, staff.id as staff_id, title, pay_amount, pay_rate, admin from people left outer join staff on people.id = staff.person_id order by name')
     .then(data => res.json({data, msg: "success getting all people", status: 200}))
     .catch(err => res.json({err, msg:"error getting people", status:500}))
 }

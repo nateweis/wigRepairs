@@ -1,4 +1,4 @@
-export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, GlobalShare){
+export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($http, $window, GlobalShare, $rootScope){
     const ctrl = this;
     this.selectedJob = {};
     this.newJobList = [];
@@ -77,10 +77,12 @@ export const jb = ['$http', '$window', 'GlobalShare', function($http, $window, G
     ];
 
     this.selectTemplate = () => {
-        const t = ctrl.template;
+        const t = ctrl.templateIndex;
         ctrl.newJob.Job = ctrl.jobTemplates[t].Job; 
         ctrl.newJob.Price = ctrl.jobTemplates[t].Price;
     }
+
+    $rootScope.$on('incomingCustomer', ()=>{ctrl.newJob.Customer = GlobalShare.currentPerson.name})
 
     this.addNewJob = () =>{
         if(ctrl.newJob.Customer == null || ctrl.newJob.Job == null || ctrl.newJob.Price == null ) window.alert("To add a job all fields are required");

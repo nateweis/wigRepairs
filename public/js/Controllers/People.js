@@ -1,5 +1,8 @@
-export const people = ['$http', '$window', function($http, $window){
+export const people = ['$http', '$window', 'GlobalShare', function($http, $window, GlobalShare){
     const ctrl = this;
+    this.allPeople = [];
+    this.customerList = [];
+    this.staffList = [];
     this.newCustomerList = [];
 
     // ================================== //
@@ -13,11 +16,25 @@ export const people = ['$http', '$window', function($http, $window){
         })
         .then(res => {
             ctrl.allPeople = res.data.data;
+            
+            res.data.data.forEach(p => {
+                if(p.person_type == 'Customer') ctrl.customerList.push(p);
+                else ctrl.staffList.push(p);
+            });
         })
         .catch(err => console.log(err))
      }
 
      getMembers();
+
+    // ================================== //
+    //      Attach Customer to Job        //
+    // ================================== //
+
+    this.selectCustomer = () => {
+        const i = ctrl.customerIndex;
+        GlobalShare.setCurrentPerson(ctrl.customerList[i]);
+    }
 
    
     // ================================== //
