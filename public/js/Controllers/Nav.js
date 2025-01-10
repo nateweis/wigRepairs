@@ -4,7 +4,7 @@ export const nav = ['GlobalShare', '$rootScope', function (GlobalShare, $rootSco
     this.navItems = [
         {label: 'Home', page: 'Home', active: true},
         {label: 'Add Job', page: 'NewJob', active: false},
-        {label: 'Add Person', page: 'AddPerson', active: false}
+        {label: 'People', page: 'AddPerson', active: false}
      ]
 
      $rootScope.$on('globalNavUpdate', ()=> ctrl.includePath = 'partials/' + GlobalShare.navPath +'.html')

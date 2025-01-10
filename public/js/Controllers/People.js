@@ -9,7 +9,15 @@ export const people = ['$http', '$window', 'GlobalShare', function($http, $windo
     //         Get Inital People          //
     // ================================== //
 
+    const restPplLists = ()=>{
+        ctrl.allPeople = [];
+        ctrl.customerList = [];
+        ctrl.staffList = [];
+    }
+
     const getMembers = () => { 
+        restPplLists();
+
         $http({
             method: 'GET',
             url: '/people' 
@@ -53,7 +61,7 @@ export const people = ['$http', '$window', 'GlobalShare', function($http, $windo
 
     this.addNewPerson = () =>{
         ctrl.newCustomer.part_of_company ? ctrl.newCustomer.person_type = 'Staff' : ctrl.newCustomer.person_type = 'Customer';
-console.log(uniqueNewPerson())
+
         if( !ctrl.newCustomer.name ) window.alert("New people require names");
         else if (!uniqueNewPerson()) window.alert("This person was already added");
         else if (ctrl.newCustomer.part_of_company && (!ctrl.newCustomer.title || ctrl.newCustomer.pay_amount < 1 || !ctrl.newCustomer.pay_rate)) window.alert("Please fill in all the staff info");
@@ -64,18 +72,16 @@ console.log(uniqueNewPerson())
         }
     }
 
+    this.removePersonFromList = i => ctrl.newCustomerList.splice(i, 1);
+
     this.submitNewPeople = ()=>{
         if(ctrl.newCustomerList.length > 0){
             $http({method: 'POST', url: '/people', data: ctrl.newCustomerList})
             .then(data => {
                 if(data.status == 500) window.alert(data.msg);
                 else{
-                    // const d = data.data.data;
-                    // ctrl.jobList.unshift(...d);
-                    // ctrl.newJobList = [];
-                    // GlobalShare.setNavPath('Home'); 
-                    // // ctrl.includePath = 'partials/Home.html';
-                    console.log(data)
+                    getMembers();
+                    ctrl.newCustomerList = [];
                 }
 
             })
