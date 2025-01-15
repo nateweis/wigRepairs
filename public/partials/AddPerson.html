@@ -1,6 +1,6 @@
 
     <div>
-        <div>
+        <div class="addPerson-container">
             <!-- General Add Person Section -->
             <span>
                 <label for="name">Name</label>
@@ -37,7 +37,7 @@
         </div>
         
         <!-- Company Person Feilds -->
-        <div ng-if="pc.newCustomer.part_of_company">
+        <div ng-if="pc.newCustomer.part_of_company" class="addPerson-container">
             <span>
                 <label for="title">Title</label>
                 <input type="text" name="title" ng-model="pc.newCustomer.title">

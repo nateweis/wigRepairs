@@ -4,6 +4,7 @@
 @import './css-pages/Home.css';
 @import './css-pages/DetailDisplay.css';
 @import './css-pages/EditJobs.css';
+@import './css-pages/AddPerson.css';
 
 
 :root{

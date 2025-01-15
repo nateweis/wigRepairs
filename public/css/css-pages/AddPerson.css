@@ -1,0 +1,19 @@
+.addPerson-container{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.addPerson-container > span{
+    margin: 5px;
+    width: 33%;
+}
+
+@media (max-width: 560px){
+    .addPerson-container{
+        width: 350px;
+    }
+  }
