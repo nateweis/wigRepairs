@@ -6,6 +6,8 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
     this.searchType = 'none';
     this.orderDesc = true;
     this.orderJobs = 'id';
+    this.dateTimeRangePast = ''
+    this.dateTimeRangeCurrent = ''
 
     let index;
     let selectedStatus;
@@ -44,6 +46,15 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
     // ================================== //
 
     this.showDetail = (job) =>{
+        const tzoffsetPast = (new Date()).getTimezoneOffset() * 72000 //72000 = currnet time - hour in mil / 60000 = current time in mil
+        const tzoffsetCurrent = (new Date()).getTimezoneOffset() * 60000 //72000 = currnet time - hour in mil / 60000 = current time in mil
+
+        let localISOTime = (new Date(Date.now() - tzoffsetPast)).toISOString();
+        ctrl.dateTimeRangePast = localISOTime.substring(0, localISOTime.lastIndexOf(':'))
+
+        localISOTime = (new Date(Date.now() - tzoffsetCurrent)).toISOString();
+        ctrl.dateTimeRangeCurrent = localISOTime.substring(0, localISOTime.lastIndexOf(':'))
+
         //  made newObj instead of directly assigning selectedJob to job so they dont share the same memory spcace
         const newObj = {};
         for (const key in job) {
@@ -136,5 +147,26 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
         })
         .catch(err => {console.log(err); window.alert("There was an error updating your job")})   
      }
+
+    // ================================== //
+    //          New Work Log              //
+    // ================================== //
+    let currentStaff = {}
+    $rootScope.$on('incomingStaff', ()=>{currentStaff = GlobalShare.currentPerson})
+    this.displayDate = () =>{
+        console.log(ctrl.currentDateTime)
+    }
+    this.addWorkLog = () =>{
+        const newWorkLog = {
+            startTime: ctrl.dateTimeRangePast,
+            endTime: ctrl.dateTimeRangeCurrent,
+            jobId: ctrl.selectedJob.id,
+            jobName: ctrl.selectedJob.name,
+            staffId: currentStaff.id,
+            staffName: currentStaff.name
+        }
+
+        console.log(newWorkLog)
+    }
 
 }]

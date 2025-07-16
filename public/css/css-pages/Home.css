@@ -1,4 +1,77 @@
-.home-item{
+.job-search-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Form sections */
+  .sort-filter-section,
+  .search-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .sort-filter-section label,
+  .search-section label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  select,
+  input[type="text"],
+  input[type="number"] {
+    padding: 6px 10px;
+    margin: 5px 10px 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 150px;
+  }
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    transform: scale(1.2);
+    margin-left: 5px;
+  }
+  
+  .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  /* Job list and count */
+  .job-count {
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  
+  .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .job-entry {
+    padding: 0 5px;
+  }
+  
+  .home-item {
+    padding: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, background-color 0.2s ease;
     cursor: pointer;
-    border: 1px solid var(--bg);
-}
+  }
+  
+  .home-item:hover {
+    background-color: #e9f5ff;
+    transform: scale(1.01);
+  }
+  

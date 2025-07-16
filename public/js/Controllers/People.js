@@ -36,12 +36,17 @@ export const people = ['$http', '$window', 'GlobalShare', function($http, $windo
      getMembers();
 
     // ================================== //
-    //      Attach Customer to Job        //
+    //      Attach Person to Job        //
     // ================================== //
 
     this.selectCustomer = () => {
         const i = ctrl.customerIndex;
         GlobalShare.setCurrentPerson(ctrl.customerList[i]);
+    }
+
+    this.selectStaff = () => {
+        const i = ctrl.staffIndex;
+        GlobalShare.setCurrentPerson(ctrl.staffList[i]);
     }
 
    

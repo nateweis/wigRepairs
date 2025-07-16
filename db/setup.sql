@@ -39,3 +39,13 @@ CREATE TABLE staff(
     pay_rate varchar(12),
     admin boolean
 );
+
+CREATE TABLE work_log(
+    id SERIAL PRIMARY KEY
+    ,time_start TIMESTAMP
+    ,time_end TIMESTAMP
+    ,job_id int
+    ,staff_id int
+    ,description text
+    ,completed boolean
+);

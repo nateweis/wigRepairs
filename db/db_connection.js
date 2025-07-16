@@ -13,3 +13,9 @@ const db = pgp(connectionString);
 db.connect();
 
 module.exports = db
+
+
+/* 
+    Next tasks: 
+    . add back button to view page
+*/

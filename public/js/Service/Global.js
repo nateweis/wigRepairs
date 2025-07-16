@@ -16,6 +16,6 @@ export const share = function($rootScope){
     this.currentPerson = {};
     this.setCurrentPerson = p =>{
         ctrl.currentPerson = p;
-        $rootScope.$emit('incomingCustomer');
+        if(p.person_type == 'Staff') $rootScope.$emit('incomingStaff'); else $rootScope.$emit('incomingCustomer');
     }
 }

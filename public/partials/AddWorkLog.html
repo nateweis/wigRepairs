@@ -1,0 +1,20 @@
+<div>
+    <div ng-click="jobs.showDetail(jobs.selectedJob)" class="edit-button">
+        <a ng-include="'imgs/icons/9034719_arrow_back_icon.svg'"></a>
+    </div>
+
+    <label for="Staff">Staff</label>
+    <select ng-model="pc.staffIndex" ng-change="pc.selectStaff()">
+        <option ng-repeat="p in pc.staffList" value="{{$index}}">{{p.name}}</option>
+    </select>
+    <div>{{jobs.selectedJob.name}}</div>
+    <label>Start Time</label>
+    <input type="datetime-local" value="{{jobs.dateTimeRangePast}}" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangePast">
+    <label>End Time</label>
+    <input type="datetime-local" value="{{jobs.dateTimeRangeCurrent}}" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangeCurrent">
+
+    <button ng-click="jobs.addWorkLog()">Add Work Log</button>
+
+    {{jobs.dateTimeRangePast}}
+</div>
+
