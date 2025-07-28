@@ -5,6 +5,8 @@
 @import './css-pages/DetailDisplay.css';
 @import './css-pages/EditJobs.css';
 @import './css-pages/AddPerson.css';
+@import './css-pages/NewJob.css';
+@import './css-pages/AddWorkLog.css';
 
 
 :root{
@@ -17,6 +19,10 @@
   --border-radius: 8px;
   --speed: 500ms;
   --font: 'Noto Serif', serif;
+  --btn-light: #007BFF;
+  --btn-light-hover: #0056b3;
+  --btn-dark: #2d4f74; 
+  --btn-dark-hover: #1b3046; 
 }
 
 

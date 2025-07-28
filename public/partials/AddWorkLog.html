@@ -1,20 +1,28 @@
-<div>
-    <div ng-click="jobs.showDetail(jobs.selectedJob)" class="edit-button">
+<div class="work-log-container">
+    <div ng-click="jobs.showDetail(jobs.selectedJob)" class="edit-button back-button">
         <a ng-include="'imgs/icons/9034719_arrow_back_icon.svg'"></a>
     </div>
 
-    <label for="Staff">Staff</label>
-    <select ng-model="pc.staffIndex" ng-change="pc.selectStaff()">
-        <option ng-repeat="p in pc.staffList" value="{{$index}}">{{p.name}}</option>
-    </select>
-    <div>{{jobs.selectedJob.name}}</div>
-    <label>Start Time</label>
-    <input type="datetime-local" value="{{jobs.dateTimeRangePast}}" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangePast">
-    <label>End Time</label>
-    <input type="datetime-local" value="{{jobs.dateTimeRangeCurrent}}" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangeCurrent">
+    <div class="form-group">
+        <label for="Staff">Staff</label>
+        <select ng-model="pc.staffIndex" ng-change="pc.selectStaff()" class="select-field">
+            <option ng-repeat="p in pc.staffList" value="{{$index}}">{{p.name}}</option>
+        </select>
+    </div>
 
-    <button ng-click="jobs.addWorkLog()">Add Work Log</button>
+    <div class="job-title">{{jobs.selectedJob.name}}</div>
 
-    {{jobs.dateTimeRangePast}}
+    <div class="form-group">
+        <label for="start-time">Start Time</label>
+        <input id="start-time" type="datetime-local" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangePast" class="input-field">
+    </div>
+
+    <div class="form-group">
+        <label for="end-time">End Time</label>
+        <input id="end-time" type="datetime-local" ng-change="jobs.displayDate()" ng-model="jobs.dateTimeRangeCurrent" class="input-field">
+    </div>
+
+    <button ng-click="jobs.addWorkLog()" class="action-button">Add Work Log</button>
+
+    <div class="time-display">{{jobs.dateTimeRangePast}}</div>
 </div>
-

@@ -1,39 +1,41 @@
-<div>
-    <div class="edit-select-containter">
-        <label for="edit">Edit Field:</label>
-
-        <select name="edit" id="edit" ng-model="jobs.selectedForEdit">
-            <option value="name">Job</option>
-            <option value="price">Price</option>
-            <option value="description">Description</option>
-            <option value="time_spent">Time Spent</option>
-            <option value="status">Status</option>
-            <option value="priorty_level">Priority Level</option>
-            <option value="due_date">Due Date</option>
-            <option value="received_payment">Recived Payment</option>
-        </select>
-
-        <input type="text" value="{{jobs.selectedJob.name}}" ng-model="jobs.selectedJob.name" ng-if="jobs.selectedForEdit == 'name'">
-        <input type="number" value="{{jobs.selectedJob.price}}" ng-model="jobs.selectedJob.price" ng-if="jobs.selectedForEdit == 'price'">
-        <input type="text" value="{{jobs.selectedJob.description}}" ng-model="jobs.selectedJob.description" ng-if="jobs.selectedForEdit == 'description'">
-        <input type="number" step=".01" value="{{jobs.selectedJob.time_spent}}" ng-model="jobs.selectedJob.time_spent" ng-if="jobs.selectedForEdit == 'time_spent'">
-        <input type="number" min="1" max="5" value="{{jobs.selectedJob.priorty_level}}" ng-model="jobs.selectedJob.priorty_level" ng-if="jobs.selectedForEdit == 'priorty_level'">
-        <input type="date" value="{{jobs.selectedJob.due_date}}" ng-model="jobs.selectedJob.due_date" ng-if="jobs.selectedForEdit == 'due_date'">
-        <input type="checkbox" value="{{jobs.selectedJob.received_payment}}" ng-model="jobs.selectedJob.received_payment" ng-if="jobs.selectedForEdit == 'received_payment'">
-        <select ng-model="jobs.selectedJob.status" ng-if="jobs.selectedForEdit == 'status'">
-            <option value="Not Started">Not Started</option>
-            <option value="Started">Started</option>
-            <option value="Returned">Returned</option>
-            <option value="Canceled">Canceled</option>
-            <option value="Complete">Complete</option>
-        </select>
-
-        <button ng-click="jobs.submitJobUpdate()">Submit Update</button>
+<div class="job-edit-container">
+    <div class="edit-select-section">
+      <label for="edit">Edit Field:</label>
+  
+      <select name="edit" id="edit" ng-model="jobs.selectedForEdit">
+        <option value="name">Job</option>
+        <option value="price">Price</option>
+        <option value="description">Description</option>
+        <option value="time_spent">Time Spent</option>
+        <option value="status">Status</option>
+        <option value="priorty_level">Priority Level</option>
+        <option value="due_date">Due Date</option>
+        <option value="received_payment">Received Payment</option>
+      </select>
+  
+      <input type="text" ng-model="jobs.selectedJob.name" ng-if="jobs.selectedForEdit == 'name'">
+      <input type="number" ng-model="jobs.selectedJob.price" ng-if="jobs.selectedForEdit == 'price'">
+      <input type="text" ng-model="jobs.selectedJob.description" ng-if="jobs.selectedForEdit == 'description'">
+      <input type="number" step=".01" ng-model="jobs.selectedJob.time_spent" ng-if="jobs.selectedForEdit == 'time_spent'">
+      <input type="number" min="1" max="5" ng-model="jobs.selectedJob.priorty_level" ng-if="jobs.selectedForEdit == 'priorty_level'">
+      <input type="date" ng-model="jobs.selectedJob.due_date" ng-if="jobs.selectedForEdit == 'due_date'">
+      <input type="checkbox" ng-model="jobs.selectedJob.received_payment" ng-if="jobs.selectedForEdit == 'received_payment'">
+  
+      <select ng-model="jobs.selectedJob.status" ng-if="jobs.selectedForEdit == 'status'">
+        <option value="Not Started">Not Started</option>
+        <option value="Started">Started</option>
+        <option value="Returned">Returned</option>
+        <option value="Canceled">Canceled</option>
+        <option value="Complete">Complete</option>
+      </select>
+  
+      <button class="btn-submit" ng-click="jobs.submitJobUpdate()">Submit Update</button>
     </div>
-
-    </br>
-    ===========
-    </br>
-
-    <div ng-repeat="(k, v) in jobs.selectedJob" class="detail-item"><strong>{{k}}</strong> : {{v}}</div>
-</div>
+  
+    <br>==========<br>
+  
+    <div ng-repeat="(k, v) in jobs.selectedJob" class="detail-item">
+      <strong>{{k}}</strong> : {{v}}
+    </div>
+  </div>
+  

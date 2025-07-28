@@ -1,88 +1,90 @@
-
-    <div>
-        <div class="addPerson-container">
-            <!-- General Add Person Section -->
-            <span>
-                <label for="name">Name</label>
-                <input type="text" name="name" ng-model="pc.newCustomer.name">
-            </span>
-            <span>
-                <label for="email">Email</label>
-                <input type="email" name="email" ng-model="pc.newCustomer.email">
-            </span>
-            <span>
-                <label for="phone_number">Phone Number</label>
-                <input type="text" name="phone_number" ng-model="pc.newCustomer.phone_number">
-            </span>
-            <span>
-                <label for="street">Street</label>
-                <input type="text" name="street" ng-model="pc.newCustomer.street">
-            </span>
-            <span>
-                <label for="city">City</label>
-                <input type="text" name="city" ng-model="pc.newCustomer.city">
-            </span>
-            <span>
-                <label for="state">State</label>
-                <input type="text" name="state" ng-model="pc.newCustomer.state">
-            </span>
-            <span>
-                <label for="zip">Zip</label>
-                <input type="text" name="zip" ng-model="pc.newCustomer.zip">
-            </span>
-            <span>
-                <label for="part_of_company">Company Personnel</label>
-                <input type="checkbox" name="part_of_company" ng-model="pc.newCustomer.part_of_company">
-            </span>
-        </div>
-        
-        <!-- Company Person Feilds -->
-        <div ng-if="pc.newCustomer.part_of_company" class="addPerson-container">
-            <span>
-                <label for="title">Title</label>
-                <input type="text" name="title" ng-model="pc.newCustomer.title">
-            </span>
-            <span>
-                <label for="pay_amount">Pay Amount ({{pc.newCustomer.pay_rate}})</label>
-                <input type="number" step=".01" name="pay_amount" ng-model="pc.newCustomer.pay_amount">
-            </span>
-            <span>
-                <label for="pay_rate">Pay Rate</label>
-                <select name="pay_rate" ng-model="pc.newCustomer.pay_rate">
-                    <option value="hourly">Hourly</option>
-                    <option value="salary">Salary</option>
-                </select>
-            </span>
-            <span>
-                <label for="admin">Admin Privileges</label>
-                <input type="checkbox" name="admin" ng-model="pc.newCustomer.admin">
-            </span>
-        </div>
-        
-    
-        </br>
-        <!-- Add and display new people -->
-        <button type="button" ng-click="pc.addNewPerson()">Add</button>
-        <button type="button" ng-click="pc.submitNewPeople()">Submit</button>
-        
-        <div ng-repeat="c in pc.newCustomerList">{{c.name}} : {{c.person_type}}  <span style="cursor: pointer;" ng-click="pc.removePersonFromList($index)">[X]</span></div>
-
-        <!-- display current people -->
-         <div>
-            <!-- Customers -->
-             <div>
-                <h4>Customers</h4>
-                <div>
-                    <div ng-repeat="c in pc.customerList">Name: {{c.name}} | Email: {{c.email}} | Phone: {{c.phone_number}}</div>
-                </div>
-             </div>
-             <!-- Staff -->
-              <div>
-                <h4>Staff</h4>
-                <div>
-                    <div ng-repeat="s in pc.staffList">Name: {{s.name}} | Position: {{s.title}}</div>
-                </div>
-              </div>
-         </div>
-        
+<div class="add-person-container">
+    <!-- General Add Person Section -->
+    <div class="form-section">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" name="name" ng-model="pc.newCustomer.name">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" name="email" ng-model="pc.newCustomer.email">
+      </div>
+      <div class="form-row">
+        <label for="phone_number">Phone Number</label>
+        <input type="text" name="phone_number" ng-model="pc.newCustomer.phone_number">
+      </div>
+      <div class="form-row">
+        <label for="street">Street</label>
+        <input type="text" name="street" ng-model="pc.newCustomer.street">
+      </div>
+      <div class="form-row">
+        <label for="city">City</label>
+        <input type="text" name="city" ng-model="pc.newCustomer.city">
+      </div>
+      <div class="form-row">
+        <label for="state">State</label>
+        <input type="text" name="state" ng-model="pc.newCustomer.state">
+      </div>
+      <div class="form-row">
+        <label for="zip">Zip</label>
+        <input type="text" name="zip" ng-model="pc.newCustomer.zip">
+      </div>
+      <div class="form-row checkbox-row">
+        <label for="part_of_company">Company Personnel</label>
+        <input type="checkbox" name="part_of_company" ng-model="pc.newCustomer.part_of_company">
+      </div>
     </div>
+  
+    <!-- Company Person Fields -->
+    <div ng-if="pc.newCustomer.part_of_company" class="form-section">
+      <div class="form-row">
+        <label for="title">Title</label>
+        <input type="text" name="title" ng-model="pc.newCustomer.title">
+      </div>
+      <div class="form-row">
+        <label for="pay_amount">Pay Amount ({{pc.newCustomer.pay_rate}})</label>
+        <input type="number" step=".01" name="pay_amount" ng-model="pc.newCustomer.pay_amount">
+      </div>
+      <div class="form-row">
+        <label for="pay_rate">Pay Rate</label>
+        <select name="pay_rate" ng-model="pc.newCustomer.pay_rate">
+          <option value="hourly">Hourly</option>
+          <option value="salary">Salary</option>
+        </select>
+      </div>
+      <div class="form-row checkbox-row">
+        <label for="admin">Admin Privileges</label>
+        <input type="checkbox" name="admin" ng-model="pc.newCustomer.admin">
+      </div>
+    </div>
+  
+    <div class="button-row">
+      <button type="button" class="btn-primary" ng-click="pc.addNewPerson()">Add</button>
+      <button type="button" class="btn-primary" ng-click="pc.submitNewPeople()">Submit</button>
+    </div>
+  
+    <!-- New Person List -->
+    <div class="new-entry-list">
+      <div class="new-entry" ng-repeat="c in pc.newCustomerList">
+        {{c.name}} : {{c.person_type}}
+        <span class="delete-button" ng-click="pc.removePersonFromList($index)">[X]</span>
+      </div>
+    </div>
+  
+    <!-- Display Current People -->
+    <div class="people-lists">
+      <div class="people-group">
+        <h4>Customers</h4>
+        <div class="person-card" ng-repeat="c in pc.customerList">
+          Name: {{c.name}} | Email: {{c.email}} | Phone: {{c.phone_number}}
+        </div>
+      </div>
+      <div class="people-group">
+        <h4>Staff</h4>
+        <div class="person-card" ng-repeat="s in pc.staffList">
+          Name: {{s.name}} | Position: {{s.title}}
+        </div>
+      </div>
+    </div>
+  </div>
+  

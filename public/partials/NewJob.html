@@ -1,26 +1,32 @@
-<!-- Note add, way to edit or remove a new job that was already added to the list -->
-<div>
-    <label for="Customer">Customer</label>
-    <select ng-model="pc.customerIndex" ng-change="pc.selectCustomer()">
+<div class="new-job-container">
+    <div class="form-section">
+      <label for="Customer">Customer</label>
+      <select ng-model="pc.customerIndex" ng-change="pc.selectCustomer()">
         <option ng-repeat="p in pc.customerList" value="{{$index}}">{{p.name}}</option>
-    </select>
-
-    <label for="Job">Job</label>
-    <input type="text" name="Job" ng-model="jobs.newJob.Job">
-    <label for="Price">Price</label>
-    <input type="number" name="Price" ng-model="jobs.newJob.Price">
-
-    <label for="template">Pre Sets</label>
-    <select ng-model="jobs.templateIndex" ng-change="jobs.selectTemplate()">
+      </select>
+  
+      <label for="Job">Job</label>
+      <input type="text" name="Job" ng-model="jobs.newJob.Job">
+  
+      <label for="Price">Price</label>
+      <input type="number" name="Price" ng-model="jobs.newJob.Price">
+  
+      <label for="template">Pre Sets</label>
+      <select ng-model="jobs.templateIndex" ng-change="jobs.selectTemplate()">
         <option ng-repeat="t in jobs.jobTemplates | orderBy : 'Job'" value="{{$index}}">{{t.Job}}</option>
-    </select>
-
-    
-
-    </br>
-    <button type="button" ng-click="jobs.addNewJob()">Add</button>
-    <button type="button" ng-click="jobs.submitNewJobs()">Submit</button>
-    
-    <div ng-repeat="nj in jobs.newJobList">{{nj}}  <span style="cursor: pointer;" ng-click="jobs.removeJobFromList($index)">[X]</span></div>
-    
-</div>
+      </select>
+  
+      <div class="button-row">
+        <button type="button" class="btn-primary" ng-click="jobs.addNewJob()">Add</button>
+        <button type="button" class="btn-primary" ng-click="jobs.submitNewJobs()">Submit</button>
+      </div>
+    </div>
+  
+    <div class="new-job-list">
+      <div class="new-job-entry" ng-repeat="nj in jobs.newJobList">
+        {{nj}}
+        <span class="delete-button" ng-click="jobs.removeJobFromList($index)">[X]</span>
+      </div>
+    </div>
+  </div>
+  
