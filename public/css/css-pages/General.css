@@ -111,3 +111,28 @@
   border-radius: 6px;
   font-size: 14px;
 }
+
+
+/* Back Button */
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.back-icon {
+  cursor: pointer;
+}
+
+.arrow-line {
+  fill: none;
+  stroke: #f9f9f9;; /* or any color you want */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 48px;
+}
+
+.back-button:hover .arrow-line {
+  stroke: #f9f9f9;; /* darker on hover */
+}

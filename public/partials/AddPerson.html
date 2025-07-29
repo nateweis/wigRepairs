@@ -1,6 +1,8 @@
 <div class="add-person-container">
+  <div ng-include="'partials/Components/BackButton.html'" ng-click="nc.updateNav('Home')" ></div>
     <!-- General Add Person Section -->
     <div class="form-section">
+      
       <div class="form-row">
         <label for="name">Name</label>
         <input type="text" name="name" ng-model="pc.newCustomer.name">

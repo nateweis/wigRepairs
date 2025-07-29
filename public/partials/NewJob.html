@@ -1,5 +1,7 @@
 <div class="new-job-container">
+  <div ng-include="'partials/Components/BackButton.html'" ng-click="nc.updateNav('Home')" ></div>
     <div class="form-section">
+
       <label for="Customer">Customer</label>
       <select ng-model="pc.customerIndex" ng-change="pc.selectCustomer()">
         <option ng-repeat="p in pc.customerList" value="{{$index}}">{{p.name}}</option>
@@ -13,7 +15,7 @@
   
       <label for="template">Pre Sets</label>
       <select ng-model="jobs.templateIndex" ng-change="jobs.selectTemplate()">
-        <option ng-repeat="t in jobs.jobTemplates | orderBy : 'Job'" value="{{$index}}">{{t.Job}}</option>
+        <option ng-repeat="t in jobs.jobTemplates" value="{{$index}}">{{t.Job}}</option>
       </select>
   
       <div class="button-row">
