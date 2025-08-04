@@ -148,6 +148,13 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
         .catch(err => {console.log(err); window.alert("There was an error updating your job")})   
      }
 
+     // add a img to the job
+     this.fileSelect = (files) => {
+        var file = files[0];
+        console.log("it dropped")
+        console.log(file)
+  }
+
     // ================================== //
     //          New Work Log              //
     // ================================== //

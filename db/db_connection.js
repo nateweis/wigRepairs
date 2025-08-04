@@ -19,7 +19,7 @@ module.exports = db
     Next tasks: 
             O add back button to all pages and refamilierize myself with whats going on with this app
     . catch up on all the current data devorah has
-    . have images store in db and display on screen
+            O have images store in db and display on screen
     . create a way to save images in db (includes paths and drag and drop elements)
     . have the work logs show up on the jobs
 */

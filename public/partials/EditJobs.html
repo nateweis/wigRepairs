@@ -34,6 +34,9 @@
       <button class="btn-submit" ng-click="jobs.submitJobUpdate()">Submit Update</button>
     </div>
   
+    <!-- <input type="file" name="Upload Image" class="job-image-drop" ng-on-drop="jobs.addImage(this.files)"> -->
+    <input type="file" file-change handler="jobs.fileSelect(files)" class="job-image-drop">
+    
     <br>==========<br>
   
     <div ng-repeat="(k, v) in jobs.selectedJob" class="detail-item">
