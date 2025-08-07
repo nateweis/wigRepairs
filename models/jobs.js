@@ -1,4 +1,5 @@
 const db = require('../db/db_connection');
+const fs = require('fs');
 
 /* *****************************************
            Functions for Routes 
@@ -28,6 +29,15 @@ const addJobs = (req, res) => {
 
   }
 
+const uploadImage = async (req, res) => {
+    console.log(req.body); 
+    console.log(req.file)
+
+    await fs.promises.mkdir('./public/imgs/uploads/newpath', { recursive: true });
+    await fs.promises.rename(req.file.path, './public/imgs/uploads/newpath/'+ req.file.originalname);
+    res.send("uploaded a file");
+}  
+
  /* *****************************************
                 Put Data 
 ********************************************/
@@ -42,4 +52,5 @@ module.exports = {
     getAllJobs
     ,addJobs
     ,updateJob
+    ,uploadImage
 }

@@ -150,9 +150,22 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
 
      // add a img to the job
      this.fileSelect = (files) => {
+        console.log(ctrl.selectedJob)
         var file = files[0];
-        console.log("it dropped")
-        console.log(file)
+        const formData = new FormData();
+
+        formData.append("jobImg", file);
+        formData.append("userData", ctrl.selectedJob);
+      
+        $http({
+            method: 'POST', 
+            url: '/jobs/imgUpload', 
+            data: formData, 
+            headers: {'Content-Type': undefined}, 
+            transformRequest: angular.identity
+        })
+            .then(data => {console.log(data) })
+            .catch(err => {console.log(err); window.alert("There was an error submitting new jobs")})
   }
 
     // ================================== //
