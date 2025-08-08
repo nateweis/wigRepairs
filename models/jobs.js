@@ -21,7 +21,7 @@ const getAllJobs = (req, res) => {
 
 const addJobs = (req, res) => { 
     const dbResolve = req.body.map((nj) => {
-        return db.one('Insert INTO jobs (name,price,description,status) VALUES (${name}, ${price}, ${description}, ${status}) Returning *', nj)
+        return db.one('Insert INTO jobs (name,price,description,status,customer_id) VALUES (${name}, ${price}, ${description}, ${status}, ${customer_id}) Returning *', nj)
     });
     Promise.all(dbResolve)
     .then(data => res.json({data, msg: "success adding all new jobs", status: 200}))

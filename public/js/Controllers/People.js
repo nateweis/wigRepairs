@@ -25,7 +25,7 @@ export const people = ['$http', '$window', 'GlobalShare', function($http, $windo
         .then(res => {
             ctrl.allPeople = res.data.data;
             
-            res.data.data.forEach(p => {
+            res.data.data.forEach(p => { 
                 if(p.person_type == 'Customer') ctrl.customerList.push(p);
                 else ctrl.staffList.push(p);
             });

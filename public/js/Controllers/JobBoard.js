@@ -93,12 +93,12 @@ export const jb = ['$http', '$window', 'GlobalShare', '$rootScope', function($ht
         ctrl.newJob.Price = ctrl.jobTemplates[t].Price;
     }
 
-    $rootScope.$on('incomingCustomer', ()=>{ctrl.newJob.Customer = GlobalShare.currentPerson.name})
+    $rootScope.$on('incomingCustomer', ()=>{ctrl.newJob.Customer = GlobalShare.currentPerson})
 
     this.addNewJob = () =>{
         if(ctrl.newJob.Customer == null || ctrl.newJob.Job == null || ctrl.newJob.Price == null ) window.alert("To add a job all fields are required");
         else{
-            const nj = {name: ctrl.newJob.Job, price: ctrl.newJob.Price, description: ctrl.newJob.Customer + ' - ' + ctrl.newJob.Job, status :"Not Started"};
+            const nj = {name: ctrl.newJob.Job, price: ctrl.newJob.Price, description: ctrl.newJob.Customer.name + ' - ' + ctrl.newJob.Job, status :"Not Started", customer_id: ctrl.newJob.Customer.id};
             ctrl.newJobList.push(nj);
             resetNewJob();
             ctrl.template = null;
